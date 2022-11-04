@@ -1,0 +1,6 @@
+navigation
+redux
+icon
+async storage
+axios
+    
