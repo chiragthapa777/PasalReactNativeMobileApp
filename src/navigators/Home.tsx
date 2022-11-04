@@ -16,11 +16,13 @@ const normalIconSize = 30;
 const Home = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
+      backBehavior="history"
       screenOptions={() => ({
-        tabBarActiveTintColor: GlobalVariables.primaryText,
+        tabBarActiveTintColor: GlobalVariables.primary,
         tabBarInactiveTintColor: GlobalVariables.baseText,
-        tabBarActiveBackgroundColor: GlobalVariables.primary,
-        tabBarInactiveBackgroundColor: GlobalVariables.base300,
+        tabBarActiveBackgroundColor: GlobalVariables.base100,
+        tabBarInactiveBackgroundColor: GlobalVariables.base100,
         header: () => null,
       })}>
       <Tab.Screen
@@ -30,7 +32,7 @@ const Home = () => {
           tabBarLabel: 'cart',
           tabBarIcon: ({focused, size, color}) => {
             color = focused
-              ? GlobalVariables.primaryText
+              ? GlobalVariables.primary
               : GlobalVariables.baseText;
             size = focused ? focusedIconSize : normalIconSize;
             return (
@@ -47,7 +49,7 @@ const Home = () => {
           tabBarLabel: 'search',
           tabBarIcon: ({focused, size, color}) => {
             color = focused
-              ? GlobalVariables.primaryText
+              ? GlobalVariables.primary
               : GlobalVariables.baseText;
             size = focused ? focusedIconSize : normalIconSize;
             return (
@@ -68,7 +70,7 @@ const Home = () => {
           tabBarLabel: 'home',
           tabBarIcon: ({focused, size, color}) => {
             color = focused
-              ? GlobalVariables.primaryText
+              ? GlobalVariables.primary
               : GlobalVariables.baseText;
             size = focused ? focusedIconSize : normalIconSize;
             return (
@@ -85,7 +87,7 @@ const Home = () => {
           tabBarLabel: 'account',
           tabBarIcon: ({focused, size, color}) => {
             color = focused
-              ? GlobalVariables.primaryText
+              ? GlobalVariables.primary
               : GlobalVariables.baseText;
             size = focused ? focusedIconSize : normalIconSize;
             return (
@@ -105,7 +107,7 @@ const Home = () => {
           tabBarLabel: 'login',
           tabBarIcon: ({focused, size, color}) => {
             color = focused
-              ? GlobalVariables.primaryText
+              ? GlobalVariables.primary
               : GlobalVariables.baseText;
             size = focused ? focusedIconSize : normalIconSize;
             return (

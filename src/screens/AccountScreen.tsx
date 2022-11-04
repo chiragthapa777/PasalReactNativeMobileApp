@@ -1,8 +1,15 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
+import Layout from '../components/Layout';
 
 type Props = {};
 
-export default function AccountScreen({}: Props) {
-  return <Text>AccountScreen</Text>;
+export default function AccountScreen({navigation}: any) {
+  return (
+    <Layout navigation={navigation}>
+      <View>
+        <Text>Account</Text>
+      </View>
+    </Layout>
+  );
 }
