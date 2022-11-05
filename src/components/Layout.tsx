@@ -2,13 +2,22 @@ import React from 'react';
 import {SafeAreaView, Text, StyleSheet, View, Pressable} from 'react-native';
 import {GlobalVariables} from '../Styles/GlobalStyles';
 import AntDesignIcons from 'react-native-vector-icons/dist/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 export default function Layout({children, navigation}: any) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.navView}>
         <Pressable
-          style={styles.navItems}
+          style={({pressed}) => [
+            styles.navItems,
+            styles.headerButton,
+            {
+              backgroundColor: pressed
+                ? GlobalVariables.base200
+                : GlobalVariables.base100,
+            },
+          ]}
           onPress={() => {
             navigation.goBack();
           }}>
@@ -18,11 +27,24 @@ export default function Layout({children, navigation}: any) {
             name="left"
           />
         </Pressable>
-        <View style={styles.navItems}>
+        <View style={[styles.navItems, styles.logoView]}>
+          <MaterialCommunityIcons
+            name="store"
+            color={GlobalVariables.primary}
+            size={26}
+          />
           <Text style={styles.headerText}>Pasal</Text>
         </View>
         <Pressable
-          style={styles.navItems}
+          style={({pressed}) => [
+            styles.navItems,
+            styles.headerButton,
+            {
+              backgroundColor: pressed
+                ? GlobalVariables.base200
+                : GlobalVariables.base100,
+            },
+          ]}
           onPress={() => {
             navigation.navigate('Search');
           }}>
@@ -49,16 +71,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingVertical: 8,
     shadowColor: GlobalVariables.base300,
+    borderBottomColor: GlobalVariables.base300,
+    borderBottomWidth: 1,
   },
-  navItems: {
-    fontSize: 20,
-    fontWeight: '600',
-  },
+  navItems: {},
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
     color: GlobalVariables.primary,
+    marginLeft: 5,
+  },
+  headerButton: {
+    borderRadius: 50,
+    padding: 5,
+  },
+  logoView: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

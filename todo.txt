@@ -4,3 +4,7 @@ icon
 async storage
 axios
     
+
+C:\Users\DELL\AppData\Local\Android\Sdk\platform-tools
+adb devices
+adb -s ce08171860e3da0a057e reverse tcp:8081 tcp:8081

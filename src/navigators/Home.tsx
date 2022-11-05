@@ -11,7 +11,7 @@ import CartScreen from '../screens/CartScreen';
 
 const Tab = createBottomTabNavigator();
 const focusedIconSize = 35;
-const normalIconSize = 30;
+const normalIconSize = 27;
 
 const Home = () => {
   return (
