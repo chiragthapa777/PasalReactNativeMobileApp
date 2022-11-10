@@ -1,33 +1,37 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import CategoryList from '../components/category/CategoryList';
 import Layout from '../components/Layout';
-
+import ProductList from '../components/product/ProductList';
+{
+  /* <View style={styles.heroView}>
+        <Image
+          style={styles.heroImage}
+          source={{
+            uri: 'https://m.media-amazon.com/images/I/71aQ3u78A3L._SX3000_.jpg',
+          }}
+        />
+      </View> */
+}
 
 export default function HomeScreen({navigation}: any) {
   return (
     <Layout navigation={navigation}>
-      <View>
-        <Text>home</Text>
-      </View>
+      <CategoryList />
+      <ProductList />  
     </Layout>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  heroView: {
+    width: '100%',
+    height: 200,
+    display: 'flex',
+    justifyContent: 'space-between',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  heroImage: {
+    width: '100%',
+    height: 200,
   },
 });

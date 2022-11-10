@@ -7,7 +7,7 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import {GlobalVariables} from '../../Styles/GlobalStyles';
+import {GlobalVariables} from '../../../Styles/GlobalStyles';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import AntDesignIcons from 'react-native-vector-icons/dist/AntDesign';
 
@@ -17,6 +17,9 @@ export default function Btn({
   width,
   action,
   loading = false,
+  disable = false,
+  opt,
+  size,
 }: any) {
   const getColor = () => {
     switch (type || '') {
@@ -71,6 +74,42 @@ export default function Btn({
       }
     }
   };
+  const getSize = () => {
+    switch (size) {
+      case 'sm': {
+        return {
+          py: 5,
+          px: 15,
+          fontSize: 13,
+          iconSize: 10,
+        };
+      }
+      case 'md': {
+        return {
+          py: 10,
+          px: 28,
+          fontSize: 16,
+          iconSize: 14,
+        };
+      }
+      case 'lg': {
+        return {
+          py: 12,
+          px: 32,
+          fontSize: 18,
+          iconSize: 14,
+        };
+      }
+      default: {
+        return {
+          py: 10,
+          px: 28,
+          fontSize: 16,
+          iconSize: 14,
+        };
+      }
+    }
+  };
   let spinValue = new Animated.Value(0);
   Animated.loop(
     Animated.timing(spinValue, {
@@ -86,6 +125,7 @@ export default function Btn({
   });
   return (
     <Pressable
+      disabled={disable}
       style={({pressed}) => [
         {
           backgroundColor: pressed ? getColor()[1] : getColor()[0],
@@ -93,6 +133,10 @@ export default function Btn({
         styles.btn,
         {
           width,
+          paddingHorizontal: getSize().px,
+          paddingVertical: getSize().py,
+          borderWidth: opt === 'outline' ? 2 : 0,
+          borderColor: getColor()[0],
         },
       ]}
       onPress={() => {
@@ -101,18 +145,27 @@ export default function Btn({
         }
       }}>
       <Text
-        style={{
-          color: getColor()[2],
-        }}>
+        style={[
+          styles.txt,
+          {
+            color: opt === 'outline' ? getColor()[0] : getColor()[2],
+            fontSize: getSize().fontSize,
+          },
+        ]}>
         {title || 'Button'}
       </Text>
       {loading ? (
         <Animated.View
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             transform: [{rotate: spin}],
             marginRight: 3,
           }}>
-          <AntDesignIcons name="loading1" size={15} color={'#fff'} />
+          <AntDesignIcons
+            name="loading1"
+            size={getSize().fontSize}
+            color={'#fff'}
+          />
         </Animated.View>
       ) : null}
     </Pressable>
@@ -130,5 +183,11 @@ const styles = StyleSheet.create({
     margin: 2,
     display: 'flex',
     flexDirection: 'row-reverse',
+  },
+  txt: {
+    fontSize: 16,
+    fontWeight: '400',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });

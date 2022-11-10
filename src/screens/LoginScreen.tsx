@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Button, Text, View} from 'react-native';
-import Btn from '../components/button/Btn';
+import {Text, View} from 'react-native';
+import Btn from '../components/utility/button/Btn';
 
 export default function LoginScreen({navigation}: any) {
   const [loading, setloading] = useState(false);
@@ -22,9 +22,18 @@ export default function LoginScreen({navigation}: any) {
       <Btn loading={loading} type={'success'} width={150} />
       <Btn loading={loading} type={'error'} />
       <View style={{display: 'flex', flexDirection: 'row'}}>
-        <Btn loading={loading} type={'info'} />
+        <Btn loading={loading} type={'info'} title="md btn" />
         <Btn loading={loading} type={'warning'} />
       </View>
+      <View
+        style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+        <Btn loading={loading} type={'info'} size="sm" title="sm btn" />
+        <Btn loading={loading} type={'warning'} size="md" title="md btn" />
+        <Btn loading={loading} type={'warning'} size="lg" title="lg btn" />
+      </View>
+      <Btn loading={loading} type={'info'} size="sm" title="sm btn" />
+      <Btn loading={loading} type={'warning'} size="lg" title="lg btn" />
+      <Btn loading={loading} type={'warning'} opt="outline" title="lg btn" />
       <Btn title="Loading" type={'secondary'} action={toggleLoading} />
     </View>
   );

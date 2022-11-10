@@ -2,8 +2,6 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import Layout from '../components/Layout';
 
-type Props = {};
-
 export default function AccountScreen({navigation}: any) {
   return (
     <Layout navigation={navigation}>

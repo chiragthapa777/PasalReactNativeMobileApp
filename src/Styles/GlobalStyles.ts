@@ -15,15 +15,21 @@ export const GlobalVariables = {
   errorLight: '#F08383',
   errorText: '#fff',
   warning: '#FBBD23',
-  warningLight: '#FFBD00',
+  warningLight: '#FFD56E',
   warningText: '#000000',
   info: '#3ABFF8',
-  infoLight: '#3FBfF0',
+  infoLight: '#8BDCFF',
   infoText: '#000000',
   base100: '#ffffff',
   base200: '#F0F6FF',
   base300: '#E2E8F4',
   baseText: '#1F2937',
+  baseTextLight: '#373737',
+  textXs: 12,
+  textSm: 15,
+  textMd: 17,
+  textLg: 20,
+  textXl: 25,
 };
 
 export const GlobalStyles = StyleSheet.create({
