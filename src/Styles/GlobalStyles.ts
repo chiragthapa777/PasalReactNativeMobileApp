@@ -24,12 +24,14 @@ export const GlobalVariables = {
   base200: '#F0F6FF',
   base300: '#E2E8F4',
   baseText: '#1F2937',
-  baseTextLight: '#373737',
-  textXs: 12,
-  textSm: 15,
-  textMd: 17,
-  textLg: 20,
-  textXl: 25,
+  baseTextLight: '#878787',
+  textXs: 10,
+  textSm: 13,
+  textMd: 15,
+  textLg: 28,
+  textXl: 20,
+  textXxl: 25,
+  textXxxl: 30,
 };
 
 export const GlobalStyles = StyleSheet.create({
