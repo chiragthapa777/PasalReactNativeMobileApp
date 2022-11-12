@@ -1,37 +1,20 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {GlobalVariables} from '../Styles/GlobalStyles';
 import Btn from '../components/utility/button/Btn';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import InputGroup from '../components/utility/input/InputGroup';
 
-const InputGroup = ({title, error, value, setValue}: any) => {
-  const [isFocused, setIsFocused] = useState(false);
-  return (
-    <View style={styles.inputGrp}>
-      <Text style={styles.inputName}>{title} </Text>
-      <TextInput
-        value={value}
-        onChangeText={setValue}
-        onBlur={() => setIsFocused(false)}
-        onFocus={() => setIsFocused(true)}
-        style={[
-          styles.inputTextField,
-          {
-            borderColor:
-              error === ''
-                ? isFocused
-                  ? GlobalVariables.primaryLight
-                  : GlobalVariables.base300
-                : GlobalVariables.error,
-          },
-        ]}
-      />
-      {error !== '' ? <Text style={styles.inputLabel}>Label here</Text> : null}
-    </View>
-  );
-};
-
-export default function LoginScreen({}: any) {
+export default function LoginScreen({navigation}: any) {
+  const [loading, setLoading] = useState(false);
+  const handleLogin = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigation.navigate('App');
+    }, 1000);
+  };
   const [username, setUsername] = useState('');
   return (
     <View style={styles.container}>
@@ -45,18 +28,36 @@ export default function LoginScreen({}: any) {
           <Text style={styles.formHeaderText}>Pasal</Text>
         </View>
         <InputGroup
-          title={'Username'}
+          // title={'Username'}
           error={''}
+          value={username}
+          setValue={setUsername}
+          placeholder={'Email'}
+        />
+        <InputGroup
+          placeholder={'Password'}
+          error={''}
+          value={username}
+          setValue={setUsername}
+          secureTextEntry={true}
+        />
+        <InputGroup
+          placeholder={'Name'}
+          title={'Name'}
+          error={'name should be given'}
           value={username}
           setValue={setUsername}
         />
         <InputGroup
-          title={'Password'}
-          error={'incorrect passoword'}
+          placeholder={'explain'}
+          multiline={true}
+          numberOfLines={5}
+          error={''}
           value={username}
           setValue={setUsername}
         />
-        <Btn title={'Login'} />
+
+        <Btn title={'Login'} action={handleLogin} loading={loading} />
       </View>
     </View>
   );
@@ -65,18 +66,19 @@ export default function LoginScreen({}: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalVariables.base200,
+    backgroundColor: GlobalVariables.base100,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+    paddingBottom: 50,
   },
   loginForm: {
-    elevation: 5,
-    width: '85%',
-    backgroundColor: GlobalVariables.base100,
+    // elevation: 5,
+    width: '100%',
+    // backgroundColor: GlobalVariables.base100,
     borderRadius: 10,
-    padding: 15,
+    padding: 10,
   },
   formHeaderView: {
     width: '100%',
@@ -91,24 +93,5 @@ const styles = StyleSheet.create({
     fontSize: GlobalVariables.textXxxl,
     fontWeight: 'bold',
     marginLeft: 3,
-  },
-  inputGrp: {
-    width: '100%',
-    paddingVertical: 10,
-  },
-  inputName: {
-    color: GlobalVariables.baseText,
-    fontSize: GlobalVariables.textSm,
-  },
-  inputLabel: {
-    color: GlobalVariables.error,
-    fontSize: GlobalVariables.textXs,
-  },
-  inputTextField: {
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: GlobalVariables.base300,
-    padding: 5,
-    color: GlobalVariables.baseText,
   },
 });

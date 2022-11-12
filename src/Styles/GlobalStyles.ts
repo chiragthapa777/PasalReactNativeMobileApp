@@ -23,6 +23,7 @@ export const GlobalVariables = {
   base100: '#ffffff',
   base200: '#F0F6FF',
   base300: '#E2E8F4',
+  base400: '#9ea1af',
   baseText: '#1F2937',
   baseTextLight: '#878787',
   textXs: 10,

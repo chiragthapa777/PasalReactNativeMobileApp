@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import HomeScreen from '../screens/HomeScreen';
 import AccountScreen from '../screens/AccountScreen';
@@ -23,6 +24,7 @@ const Home = () => {
         tabBarInactiveTintColor: GlobalVariables.baseText,
         tabBarActiveBackgroundColor: GlobalVariables.base100,
         tabBarInactiveBackgroundColor: GlobalVariables.base100,
+        tabBarHideOnKeyboard: true,
         header: () => null,
       })}>
       <Tab.Screen
