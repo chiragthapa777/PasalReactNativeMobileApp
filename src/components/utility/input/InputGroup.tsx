@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   inputTextField: {
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: GlobalVariables.base400,
+    borderColor: GlobalVariables.base500,
     padding: 5,
     color: GlobalVariables.baseText,
     // textAlignVertical: 'top', // for multiline textinput

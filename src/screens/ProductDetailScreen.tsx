@@ -1,6 +1,11 @@
-import {StyleSheet, View,Text, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, Image, Pressable} from 'react-native';
 import {GlobalVariables} from '../Styles/GlobalStyles';
-import RootLayout from "../components/layouts/RootLayout";
+import RootLayout from '../components/layouts/RootLayout';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+// @ts-ignore
+import Stars from 'react-native-stars';
 
 const product: any = {
   id: 15,
@@ -63,11 +68,289 @@ const product: any = {
   averageRating: 0,
 };
 
-function ProductDetailScreen({navigation}:any) {
+function ProductImage({images}: any) {
+  console.log(images);
   return (
-    <RootLayout navigation={navigation}>
-      <Text>Product</Text>
-    </RootLayout>
+    <View
+      style={{
+        width: '100%',
+        height: 320,
+        backgroundColor: GlobalVariables.base100,
+        padding: 3,
+      }}>
+      <Image
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        resizeMode="contain"
+        source={{
+          uri: images[0].url,
+        }}
+      />
+    </View>
+  );
+}
+// eslint-disable-next-line @typescript-eslint/no-shadow
+function ProductDetail({product}: any) {
+  return (
+    <View
+      style={{
+        // minHeight: 400,
+        padding: 10,
+        backgroundColor: GlobalVariables.base100,
+        borderRadius: 15,
+        elevation: 10,
+        shadowColor: GlobalVariables.base400,
+      }}>
+      <Text
+        style={{
+          color: GlobalVariables.primary,
+          fontWeight: 'bold',
+          fontSize: GlobalVariables.textXl,
+          margin: 5,
+          marginVertical: 10,
+        }}>
+        {product.name}
+      </Text>
+      {/*STAR starts*/}
+      <View
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: 'row',
+        }}>
+        <Stars
+          default={1.5}
+          disabled={true}
+          spacing={2}
+          count={5}
+          half={true}
+          starSize={50}
+          fullStar={
+            <Icon name={'star'} size={20} style={[styles.myStarStyle]} />
+          }
+          emptyStar={
+            <Icon
+              name={'star-o'}
+              size={20}
+              style={[styles.myStarStyle, styles.myEmptyStarStyle]}
+            />
+          }
+          halfStar={
+            <Icon
+              name={'star-half-empty'}
+              size={20}
+              style={[styles.myStarStyle]}
+            />
+          }
+        />
+        <Text
+          style={{
+            color: GlobalVariables.baseText,
+            fontSize: GlobalVariables.textXs,
+          }}>
+          3 reviews | 4 questions
+        </Text>
+      </View>
+      {/*STAR ends*/}
+
+      {/*Divider*/}
+      <View
+        style={{
+          backgroundColor: GlobalVariables.base200,
+          width: '100%',
+          height: 1,
+          marginVertical: 10,
+        }}
+      />
+
+      {/*  CAT & VENDOR*/}
+      <View>
+        <View
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}>
+          <Text
+            style={{
+              color: GlobalVariables.baseText,
+              fontSize: GlobalVariables.textMd,
+            }}>
+            Vendor :
+          </Text>
+          <View
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+            }}>
+            {/*badge*/}
+            <Pressable
+              style={{
+                backgroundColor: GlobalVariables.primary,
+                margin: 3,
+                padding: 4,
+                paddingHorizontal: 7,
+                borderRadius: 3,
+                shadowColor: GlobalVariables.primaryLight,
+                elevation: 5,
+                marginLeft: 5,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row',
+              }}>
+              <MaterialCommunityIcons
+                name={'store'}
+                size={16}
+                style={{
+                  color: GlobalVariables.primaryText,
+                  marginRight: 3,
+                }}
+              />
+              <Text
+                style={{
+                  color: GlobalVariables.primaryText,
+                  backgroundColor: GlobalVariables.primary,
+                  fontSize: GlobalVariables.textSm,
+                }}>
+                {product.vendor.name}
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+        {/*Categores*/}
+        <View
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginTop: 5,
+          }}>
+          <Text
+            style={{
+              color: GlobalVariables.baseText,
+              fontSize: GlobalVariables.textMd,
+            }}>
+            Categories :
+          </Text>
+          <View
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+            }}>
+            {/*badge*/}
+            <Pressable
+              style={{
+                backgroundColor: 'rgba(52, 52, 52, 0)',
+                margin: 3,
+                padding: 3,
+                paddingHorizontal: 7,
+                borderRadius: 3,
+                marginLeft: 5,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row',
+                borderColor: GlobalVariables.primary,
+                borderWidth: 1,
+              }}>
+              <MaterialIcons
+                name={'category'}
+                size={16}
+                style={{
+                  color: GlobalVariables.primary,
+                  marginRight: 3,
+                }}
+              />
+              <Text
+                style={{
+                  color: GlobalVariables.primary,
+                  fontSize: GlobalVariables.textSm,
+                }}>
+                {product.vendor.name}
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+        {/*Divider*/}
+        <View
+          style={{
+            backgroundColor: GlobalVariables.base200,
+            width: '100%',
+            height: 1,
+            marginVertical: 10,
+          }}
+        />
+        {/*  Price quantity Btn*/}
+        <Text
+          style={{
+            color: GlobalVariables.baseText,
+            fontSize: GlobalVariables.textXxl,
+            fontWeight: 'bold',
+            marginBottom: 4,
+          }}>
+          Rs.{product.price}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+function ProductDetailScreen({navigation}: any) {
+  return (
+    <>
+      <RootLayout navigation={navigation}>
+        <ProductImage images={product.images} />
+        <View
+          style={{
+            padding: 10,
+            paddingHorizontal: 15,
+          }}>
+          <ProductDetail product={product} />
+        </View>
+      </RootLayout>
+      <Pressable
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed
+              ? GlobalVariables.primaryLight
+              : GlobalVariables.primary,
+          },
+          {
+            padding: 17,
+            position: 'absolute',
+            bottom: 30,
+            right: 20,
+            borderRadius: 50,
+            zIndex: 100,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            shadowColor: GlobalVariables.primaryLight,
+            elevation: 17,
+          },
+        ]}>
+        <MaterialCommunityIcons
+          name={'cart-plus'}
+          size={25}
+          style={{
+            color: GlobalVariables.primaryText,
+            marginRight: 3,
+          }}
+        />
+      </Pressable>
+    </>
   );
 }
 
@@ -78,6 +361,16 @@ const styles = StyleSheet.create({
     margin: 3,
     borderRadius: 10,
     elevation: 1,
+  },
+  myStarStyle: {
+    color: '#FFD700',
+    backgroundColor: 'transparent',
+    textShadowColor: GlobalVariables.base300,
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 2,
+  },
+  myEmptyStarStyle: {
+    color: '#FFD700',
   },
 });
 

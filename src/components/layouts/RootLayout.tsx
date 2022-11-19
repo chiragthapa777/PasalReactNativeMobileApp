@@ -14,17 +14,22 @@ import {GlobalVariables} from '../../Styles/GlobalStyles';
 import AntDesignIcons from 'react-native-vector-icons/dist/AntDesign';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import Badge from '../utility/badge/Badge'
+import Indicator from '../utility/indicator/Indicator';
+import {Dimensions} from 'react-native';
 
 export default function RootLayout({children, navigation}: any) {
+  const windowHeight = Dimensions.get('window').height;
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor={GlobalVariables.base100}
       />
+      {/*navbar*/}
       <View style={styles.navView}>
+        {/*navtop*/}
         <View style={styles.navTop}>
+          {/*navleft*/}
           <View
             style={{
               display: 'flex',
@@ -81,38 +86,55 @@ export default function RootLayout({children, navigation}: any) {
           </View>
           <View
             style={{
+              // height: '100%',
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
               paddingVertical: 2,
-            }}
-          />
-          <Badge
-            action={() => {
-              navigation.goBack();
-            }}
-            value={10}>
-            <MaterialCommunityIcons
-              size={28}
-              color={GlobalVariables.primary}
-              name="cart"
+            }}>
+            <Indicator
+              action={() => {
+                navigation.goBack();
+              }}
+              value={5}>
+              <MaterialCommunityIcons
+                size={28}
+                color={GlobalVariables.primary}
+                name="cart"
+              />
+            </Indicator>
+            {/*divider*/}
+            <View
+              style={{
+                marginHorizontal: 4,
+                marginVertical: 'auto',
+                width: 1.2,
+                height: '65%',
+                backgroundColor: GlobalVariables.base300,
+              }}
             />
-          </Badge>
-          <Badge
-            action={() => {
-              navigation.goBack();
-            }}
-            value={10}>
-            <MaterialCommunityIcons
-              size={28}
-              color={GlobalVariables.primary}
-              name="home"
-            />
-          </Badge>
+            <Indicator
+              action={() => {
+                navigation.goBack();
+              }}
+              value={10}>
+              <MaterialCommunityIcons
+                size={28}
+                color={GlobalVariables.primary}
+                name="heart"
+              />
+            </Indicator>
+          </View>
         </View>
       </View>
-      <ScrollView>{children}</ScrollView>
+      <ScrollView
+        style={{
+          position: 'relative',
+          minHeight: windowHeight,
+        }}>
+        {children}
+      </ScrollView>
     </SafeAreaView>
   );
 }

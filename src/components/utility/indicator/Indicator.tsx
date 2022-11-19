@@ -2,7 +2,7 @@ import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {GlobalVariables} from '../../../Styles/GlobalStyles';
 
-export default function Batch({children, action, value}: any) {
+export default function Indicator({children, action, value}: any) {
   return (
     <Pressable
       style={({pressed}) => [
@@ -11,8 +11,8 @@ export default function Batch({children, action, value}: any) {
             ? GlobalVariables.base200
             : GlobalVariables.base100,
           position: 'relative',
-          borderRadius: 50,
-          padding: 4,
+          paddingTop: 7,
+          paddingRight: 7,
         },
       ]}
       onPress={() => {
@@ -21,12 +21,12 @@ export default function Batch({children, action, value}: any) {
       <View
         style={{
           position: 'absolute',
-          top: -3,
-          right: -3,
+          top: 0,
+          right: 0,
           backgroundColor: GlobalVariables.secondary,
           borderRadius: 50,
-          height: 20,
-          width: 20,
+          height: 17,
+          width: 17,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
