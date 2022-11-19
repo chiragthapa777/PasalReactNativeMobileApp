@@ -1,14 +1,7 @@
-import React, {useRef} from 'react';
-import {
-  Text,
-  StyleSheet,
-  View,
-  Pressable,
-  Animated,
-  Easing,
-} from 'react-native';
+import React from 'react';
+import {Text, StyleSheet, Pressable, Animated, Easing} from 'react-native';
 import {GlobalVariables} from '../../../Styles/GlobalStyles';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+// @ts-ignore
 import AntDesignIcons from 'react-native-vector-icons/dist/AntDesign';
 
 export default function Btn({

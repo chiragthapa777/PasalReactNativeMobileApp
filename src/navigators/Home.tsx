@@ -11,8 +11,8 @@ import SearchScreen from '../screens/SearchScreen';
 import CartScreen from '../screens/CartScreen';
 
 const Tab = createBottomTabNavigator();
-const focusedIconSize = 35;
-const normalIconSize = 27;
+const focusedIconSize = 32;
+const normalIconSize = 28;
 
 const Home = () => {
   return (
@@ -42,6 +42,10 @@ const Home = () => {
             );
           },
           tabBarBadge: 2,
+          tabBarBadgeStyle: {
+            backgroundColor: GlobalVariables.secondary,
+            color: GlobalVariables.secondaryText,
+          },
         }}
       />
       <Tab.Screen
@@ -82,38 +86,38 @@ const Home = () => {
         }}
       />
 
+      {/*<Tab.Screen*/}
+      {/*  name="Account"*/}
+      {/*  component={AccountScreen}*/}
+      {/*  options={{*/}
+      {/*    tabBarLabel: 'account',*/}
+      {/*    tabBarIcon: ({focused, size, color}) => {*/}
+      {/*      color = focused*/}
+      {/*        ? GlobalVariables.primary*/}
+      {/*        : GlobalVariables.baseText;*/}
+      {/*      size = focused ? focusedIconSize : normalIconSize;*/}
+      {/*      return (*/}
+      {/*        <MaterialCommunityIcons*/}
+      {/*          name="account"*/}
+      {/*          color={color}*/}
+      {/*          size={size}*/}
+      {/*        />*/}
+      {/*      );*/}
+      {/*    },*/}
+      {/*  }}*/}
+      {/*/>*/}
       <Tab.Screen
-        name="Account"
-        component={AccountScreen}
-        options={{
-          tabBarLabel: 'account',
-          tabBarIcon: ({focused, size, color}) => {
-            color = focused
-              ? GlobalVariables.primary
-              : GlobalVariables.baseText;
-            size = focused ? focusedIconSize : normalIconSize;
-            return (
-              <MaterialCommunityIcons
-                name="account"
-                color={color}
-                size={size}
-              />
-            );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Login"
+        name="More"
         component={LoginScreen}
         options={{
-          tabBarLabel: 'login',
+          tabBarLabel: 'More',
           tabBarIcon: ({focused, size, color}) => {
             color = focused
               ? GlobalVariables.primary
               : GlobalVariables.baseText;
             size = focused ? focusedIconSize : normalIconSize;
             return (
-              <MaterialCommunityIcons name="login" color={color} size={size} />
+              <MaterialCommunityIcons name="menu" color={color} size={size} />
             );
           },
         }}

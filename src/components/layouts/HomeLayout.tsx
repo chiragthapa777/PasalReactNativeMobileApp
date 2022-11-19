@@ -7,14 +7,21 @@ import {
   Pressable,
   ScrollView,
   TextInput,
+  StatusBar,
 } from 'react-native';
-import {GlobalVariables} from '../Styles/GlobalStyles';
+import {GlobalVariables} from '../../Styles/GlobalStyles';
+// @ts-ignore
 import AntDesignIcons from 'react-native-vector-icons/dist/AntDesign';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-export default function Layout({children, navigation}: any) {
+export default function HomeLayout({children, navigation}: any) {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={GlobalVariables.base100}
+      />
       <View style={styles.navView}>
         <View style={styles.navTop}>
           <Pressable
@@ -66,7 +73,11 @@ export default function Layout({children, navigation}: any) {
         </View>
         <View style={styles.navBottom}>
           <View style={styles.navSearch}>
-            <TextInput placeholder="Search" style={styles.navtextField} />
+            <TextInput
+              placeholder="Search"
+              style={styles.navtextField}
+              placeholderTextColor={GlobalVariables.baseTextLight}
+            />
             <Pressable
               style={({pressed}) => [
                 styles.navItems,

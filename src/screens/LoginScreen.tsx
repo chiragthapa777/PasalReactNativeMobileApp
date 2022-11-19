@@ -41,21 +41,6 @@ export default function LoginScreen({navigation}: any) {
           setValue={setUsername}
           secureTextEntry={true}
         />
-        <InputGroup
-          placeholder={'Name'}
-          title={'Name'}
-          error={'name should be given'}
-          value={username}
-          setValue={setUsername}
-        />
-        <InputGroup
-          placeholder={'explain'}
-          multiline={true}
-          numberOfLines={5}
-          error={''}
-          value={username}
-          setValue={setUsername}
-        />
 
         <Btn title={'Login'} action={handleLogin} loading={loading} />
       </View>
@@ -71,7 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    paddingBottom: 50,
   },
   loginForm: {
     // elevation: 5,

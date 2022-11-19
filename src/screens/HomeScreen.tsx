@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import CategoryList from '../components/category/CategoryList';
-import Layout from '../components/Layout';
+import HomeLayout from '../components/layouts/HomeLayout';
 import ProductList from '../components/product/ProductList';
 {
   /* <View style={styles.heroView}>
@@ -16,10 +16,10 @@ import ProductList from '../components/product/ProductList';
 
 export default function HomeScreen({navigation}: any) {
   return (
-    <Layout navigation={navigation}>
+    <HomeLayout navigation={navigation}>
       <CategoryList />
-      <ProductList />  
-    </Layout>
+      <ProductList navigation={navigation} />
+    </HomeLayout>
   );
 }
 

@@ -1,13 +1,16 @@
 import {View, Button, Text, StyleSheet, Pressable, Image} from 'react-native';
 import React from 'react';
-import {products} from '../utility/data/products';
-import SectionHeader from '../utility/SectionHeader';
+
 import {GlobalVariables} from '../../Styles/GlobalStyles';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-export default function ProductCard({product}: any) {
+export default function ProductCard({navigation, product}: any) {
+  const handleCardClick = () => {
+    navigation.navigate('ProductDetail');
+  };
   return (
-    <Pressable style={styles.card}>
+    <Pressable style={styles.card} onPress={handleCardClick}>
       <Image
         source={{
           uri: product.images[0].url,
@@ -17,12 +20,18 @@ export default function ProductCard({product}: any) {
       />
       <View style={styles.cardBottomVew}>
         <View style={styles.leftView}>
-          <Text style={[styles.cardText,{
-            width : '100%',
-            textAlign:'center',
-            color: GlobalVariables.primary,
-            fontSize: GlobalVariables.textLg
-          }]}>₹ {product.price}</Text>
+          <Text
+            style={[
+              styles.cardText,
+              {
+                width: '100%',
+                textAlign: 'center',
+                color: GlobalVariables.primary,
+                fontSize: GlobalVariables.textXl,
+              },
+            ]}>
+            ₹ {product.price}
+          </Text>
           <Pressable
             style={({pressed}) => [
               {
@@ -33,7 +42,7 @@ export default function ProductCard({product}: any) {
               styles.cartBtn,
             ]}>
             <MaterialCommunityIcons
-              size={24}
+              size={18}
               color={GlobalVariables.base100}
               name={'cart-arrow-down'}
             />
@@ -41,7 +50,10 @@ export default function ProductCard({product}: any) {
         </View>
         <View style={styles.rightView}>
           <Text
-            style={[styles.cardText, {color: GlobalVariables.baseTextLight, textAlign:'center'}]}>
+            style={[
+              styles.cardText,
+              {color: GlobalVariables.baseTextLight, textAlign: 'center'},
+            ]}>
             {product.name}
           </Text>
         </View>
@@ -68,7 +80,7 @@ const styles = StyleSheet.create({
   cardText: {
     color: GlobalVariables.baseText,
     fontWeight: 'bold',
-    fontSize: GlobalVariables.textMd,
+    fontSize: GlobalVariables.textLg,
     flex: 1,
     flexWrap: 'wrap',
   },
@@ -77,6 +89,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     padding: 5,
     paddingVertical: 10,
+    paddingBottom: 20,
   },
   leftView: {
     width: '100%',
@@ -84,15 +97,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom:5
+    marginBottom: 5,
   },
   rightView: {
-    alignItems:'center'
+    alignItems: 'center',
   },
   cartBtn: {
     padding: 10,
     borderRadius: 50,
-    elevation:15,
-    shadowColor:GlobalVariables.primaryLight
+    elevation: 15,
+    shadowColor: GlobalVariables.primary,
   },
 });
